@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kamrun Nahar — Product Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F5F0;--surface:#FFFFFF;--border:#E2DDD6;
+  --text:#1A1714;--muted:#6B6560;
+  --accent:#1B4F8A;--accent-light:#EAF1FB;
+  --green:#2D6A2D;--green-light:#EAF3EA;
+  --amber:#7A4A0E;--amber-light:#FDF3E3;
+  --rose:#8B2252;--rose-light:#FBEAF3;
+  --teal:#0F6E56;--teal-light:#E1F5EE;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6}
+nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--text)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.hero{max-width:920px;margin:0 auto;padding:5rem 2rem 3.5rem;animation:fadeUp .6s ease both}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,58px);line-height:1.1;margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-bio{font-size:17px;color:var(--muted);line-height:1.75;max-width:600px;margin-bottom:2rem}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px}
+.contact-pill{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:6px 14px;text-decoration:none;transition:border-color .2s,color .2s}
+.contact-pill:hover{border-color:var(--accent);color:var(--accent)}
+.contact-pill svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.stats-section{max-width:920px;margin:0 auto;padding:0 2rem 4rem;animation:fadeUp .6s .1s ease both}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.5rem;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s}
+.stat-card:hover{box-shadow:0 8px 28px rgba(0,0,0,0.07);transform:translateY(-2px)}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.stat-card:nth-child(1)::after{background:#1B4F8A}
+.stat-card:nth-child(2)::after{background:#2D6A2D}
+.stat-card:nth-child(3)::after{background:#7A4A0E}
+.stat-card:nth-child(4)::after{background:#0F6E56}
+.stat-card:nth-child(5)::after{background:#8B2252}
+.stat-num{font-family:'DM Serif Display',serif;font-size:36px;line-height:1;color:var(--text);margin-bottom:6px}
+.stat-label{font-size:13px;color:var(--muted);line-height:1.4}
+.stat-sub{font-size:11px;color:var(--muted);margin-top:4px;opacity:.7}
+section{max-width:920px;margin:0 auto;padding:4rem 2rem;border-top:1px solid var(--border);animation:fadeUp .6s .15s ease both}
+.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.5rem}
+.section-title{font-family:'DM Serif Display',serif;font-size:28px;margin-bottom:2rem}
+.projects-grid{display:grid;gap:1rem}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:box-shadow .2s,transform .2s}
+.project-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.07);transform:translateY(-2px)}
+.project-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.75rem}
+.project-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.project-name{font-family:'DM Serif Display',serif;font-size:19px;margin-bottom:3px}
+.project-meta{font-size:12px;color:var(--muted)}
+.project-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:.75rem}
+.tag{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--green-light);color:var(--green)}
+.tag.blue{background:var(--accent-light);color:var(--accent)}
+.tag.amber{background:var(--amber-light);color:var(--amber)}
+.tag.rose{background:var(--rose-light);color:var(--rose)}
+.tag.teal{background:var(--teal-light);color:var(--teal)}
+.case-study-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--accent);border:1px solid var(--accent-light);background:var(--accent-light);border-radius:20px;padding:4px 12px;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+.case-study-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.case-study-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem}
+.skill{font-size:13px;padding:6px 14px;border-radius:8px;background:var(--surface);border:1px solid var(--border);color:var(--text)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+.tool-group{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+.tool-group-name{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.6rem}
+.tool-group p{font-size:13px;color:var(--text);line-height:1.7}
+.timeline{display:flex;flex-direction:column}
+.tl-item{display:flex;gap:1.5rem;padding-bottom:2rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:16px;flex-shrink:0}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-light);flex-shrink:0;margin-top:4px}
+.tl-line{flex:1;width:1px;background:var(--border);margin-top:6px}
+.tl-item:last-child .tl-line{display:none}
+.tl-title{font-weight:500;font-size:15px}
+.tl-company{font-size:14px;color:var(--accent);margin:3px 0 2px}
+.tl-date{font-size:12px;color:var(--muted);margin-bottom:.5rem}
+.tl-projects{font-size:13px;color:var(--muted);line-height:1.8}
+.tl-projects strong{color:var(--text);font-weight:500}
+.edu-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+.edu-degree{font-weight:500;font-size:15px;margin-bottom:4px}
+.edu-school{font-size:13px;color:var(--accent);margin-bottom:4px}
+.edu-detail{font-size:12px;color:var(--muted)}
+footer{border-top:1px solid var(--border);text-align:center;padding:3rem 2rem;font-size:13px;color:var(--muted)}
+footer a{color:var(--accent);text-decoration:none}
+.footer-name{font-family:'DM Serif Display',serif;font-size:24px;color:var(--text);margin-bottom:.5rem}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){nav{padding:0 1rem}.nav-links{gap:1rem}.hero,section{padding-left:1.25rem;padding-right:1.25rem}.stats-section{padding-left:1.25rem;padding-right:1.25rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Kamrun Nahar</span>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Available for opportunities</div>
+  <h1>Product Analyst<br><em>&amp; Business Analyst</em></h1>
+  <p class="hero-bio">5+ years translating complex business needs into clear technical requirements across enterprise, government, SaaS, and large-scale B2C platforms — bridging business units and engineering teams from discovery through post-deployment validation.</p>
+  <div class="contact-row">
+    <a href="mailto:knahar213@gmail.com" class="contact-pill">
+      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      knahar213@gmail.com
+    </a>
+    <a href="https://linkedin.com/in/kamrunnahar35" target="_blank" rel="noopener" class="contact-pill">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <span class="contact-pill">
+      <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Dhaka, Bangladesh
+    </span>
+  </div>
+</div>
+
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Years of experience</div><div class="stat-sub">B2B · B2C · SaaS · Enterprise</div></div>
+    <div class="stat-card"><div class="stat-num">20+</div><div class="stat-label">Products shipped</div><div class="stat-sub">Across 3 companies</div></div>
+    <div class="stat-card"><div class="stat-num">57%</div><div class="stat-label">Engagement lift</div><div class="stat-sub">My Points — Bdjobs.com</div></div>
+    <div class="stat-card"><div class="stat-num">10K+</div><div class="stat-label">Users impacted</div><div class="stat-sub">UNICEF U-Youth, Burkina Faso</div></div>
+    <div class="stat-card"><div class="stat-num">5.9K+</div><div class="stat-label">Active users</div><div class="stat-sub">QA Brains platform</div></div>
+  </div>
+</div>
+
+<section id="projects">
+  <div class="section-label">Work</div>
+  <div class="section-title">All Projects</div>
+  <div class="projects-grid">
+
+    <!-- May 2024 – Nov 2025 · Riseup Labs -->
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">ITLMS for NAEM</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#EAF1FB;">🏛️</div>
+      </div>
+      <p class="project-desc">Enterprise training management system for the National Academy for Educational Management supporting 26 government training programs. Led end-to-end requirements gathering, wireframes, workflow documentation, and delivery coordination.</p>
+      <div class="tags"><span class="tag blue">26 government programs</span><span class="tag blue">Enterprise / ERP</span><span class="tag blue">Requirements lifecycle</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">EMS BPO Panel</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#FDF3E3;">📊</div>
+      </div>
+      <p class="project-desc">Operational dashboard for 150+ enterprise BPO team members. Led requirements documentation, workflow mapping, change request management, and delivery coordination for operational and performance tracking.</p>
+      <div class="tags"><span class="tag amber">150+ team members</span><span class="tag amber">Enterprise dashboard</span><span class="tag amber">Workflow optimization</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">QA Brains</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#EAF3EA;">🧠</div>
+      </div>
+      <p class="project-desc">Community-driven knowledge-sharing platform for QA professionals. Built and scaled from scratch — led feature delivery and iterative improvement cycles based on user feedback.</p>
+      <div class="tags"><span class="tag">5,000+ registered users</span><span class="tag">500+ blogs</span><span class="tag">500+ QA jobs</span><span class="tag">5.9K+ active users</span></div>
+      <a href="https://app.notion.com/p/Case-Study-209ad615e84780778897c6f4a7ca1447?source=copy_link" target="_blank" rel="noopener" class="case-study-btn">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View Case Study
+      </a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">UNICEF U-Youth (Burkina Faso)</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#E1F5EE;">🌍</div>
+      </div>
+      <p class="project-desc">Mobile-first platform supporting 10,000+ young people in storytelling, feedback collection, and program engagement across Burkina Faso. Owned feature requirements, international stakeholder coordination, and end-to-end delivery.</p>
+      <div class="tags"><span class="tag teal">10,000+ users</span><span class="tag teal">International stakeholders</span><span class="tag teal">Mobile-first</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">ARC iGaming Website</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#FBEAF3;">🎮</div>
+      </div>
+      <p class="project-desc">Global iGaming platform integrating 5+ games with real-time content updates. Led feature requirements, content delivery coordination, and international user experience optimization.</p>
+      <div class="tags"><span class="tag rose">5+ games integrated</span><span class="tag rose">Global platform</span><span class="tag rose">Real-time content</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">SilkenAura E-commerce (Web &amp; App)</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#FDF3E3;">🛍️</div>
+      </div>
+      <p class="project-desc">Conversion-focused e-commerce platform for web and app. Led feature delivery, UAT validation, and post-launch review focused on improving conversion rates and user experience.</p>
+      <div class="tags"><span class="tag amber">Conversion-optimized</span><span class="tag amber">Web &amp; App</span><span class="tag amber">UAT led</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">HitSqwad Website Admin Panel</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#EAF1FB;">⚙️</div>
+      </div>
+      <p class="project-desc">Enhanced admin efficiency through improved backend workflows and content management tools. Led requirements documentation and delivery coordination for the admin panel.</p>
+      <div class="tags"><span class="tag blue">Admin panel</span><span class="tag blue">Workflow improvement</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Gnetic Currency Converter</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#EAF3EA;">💱</div>
+      </div>
+      <p class="project-desc">Currency converter for Gnetic Technology's digital ecosystem — seamless interface integrating real-time exchange rates and an intuitive analytics dashboard.</p>
+      <div class="tags"><span class="tag">Real-time data</span><span class="tag">Fintech-adjacent</span><span class="tag">Analytics UI</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Shopify GIS Integration — American Nautical Services</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#E1F5EE;">🗺️</div>
+      </div>
+      <p class="project-desc">Interactive GIS-based chart catalog experience for Shopify. Led requirements and delivery for geospatial interface improvements to enhance nautical chart browsing.</p>
+      <div class="tags"><span class="tag teal">GIS / Geospatial</span><span class="tag teal">Shopify</span><span class="tag teal">International client</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Choto.co URL Shortener</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#FBEAF3;">🔗</div>
+      </div>
+      <p class="project-desc">Scaled the URL shortening platform to 1,000+ shortened links and 200+ active users. Led feature planning, pricing-tier analysis, and iterative improvements to enhance usability.</p>
+      <div class="tags"><span class="tag rose">1,000+ links</span><span class="tag rose">200+ active users</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Islamic Quotes App</div><div class="project-meta">Product Analyst · Riseup Labs · May 2024 – Nov 2025</div></div>
+        <div class="project-icon" style="background:#EAF3EA;">☪️</div>
+      </div>
+      <p class="project-desc">Evolved a quotes-focused app into a multi-feature Islamic companion. Restructured navigation using a gateway-style Home screen and a complete "More" index — creating a clearer mental model and scalable foundation.</p>
+      <div class="tags"><span class="tag">10,000+ downloads</span><span class="tag">Improved retention</span><span class="tag">Navigation redesign</span></div>
+    </div>
+
+    <!-- Jan 2022 – May 2024 · Bdjobs Team Lead -->
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">My Points — Gamified Rewards</div><div class="project-meta">Product Analyst, Team Lead · Bdjobs.com · Jan 2022 – May 2024</div></div>
+        <div class="project-icon" style="background:#FDF3E3;">🏆</div>
+      </div>
+      <p class="project-desc">Led gamification strategy for Bangladesh's largest job platform. Documented functional requirements for engagement-driven reward mechanisms, coordinated sprint delivery, and tracked post-launch outcomes.</p>
+      <div class="tags"><span class="tag amber">57% engagement increase</span><span class="tag amber">Gamification</span><span class="tag amber">B2C</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Online Test System (Web &amp; App)</div><div class="project-meta">Product Analyst, Team Lead · Bdjobs.com · Jan 2022 – May 2024</div></div>
+        <div class="project-icon" style="background:#EAF1FB;">📝</div>
+      </div>
+      <p class="project-desc">Structured test-taking platform for candidates and employers across web and app. Led product analysis, wireframing, user interviews, UAT, and iterative improvements.</p>
+      <div class="tags"><span class="tag blue">UAT led</span><span class="tag blue">User interviews</span><span class="tag blue">Web &amp; App</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">AI Assessment in My Bdjobs</div><div class="project-meta">Product Analyst, Team Lead · Bdjobs.com · Jan 2022 – May 2024</div></div>
+        <div class="project-icon" style="background:#EAF3EA;">🤖</div>
+      </div>
+      <p class="project-desc">Led requirements and delivery of AI-based assessment modules to improve candidate evaluation and job–skill matching on Bangladesh's largest job platform.</p>
+      <div class="tags"><span class="tag">AI-powered feature</span><span class="tag">Candidate evaluation</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Messaging with Employers &amp; Employer Interest</div><div class="project-meta">Product Analyst, Team Lead · Bdjobs.com · Jan 2022 – May 2024</div></div>
+        <div class="project-icon" style="background:#FBEAF3;">💬</div>
+      </div>
+      <p class="project-desc">Documented and delivered features enabling direct communication between job seekers and employers, improving user-to-employer interaction and conversion rates.</p>
+      <div class="tags"><span class="tag rose">Improved conversion</span><span class="tag rose">Communication feature</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Career Counselling App Features</div><div class="project-meta">Product Analyst, Team Lead · Bdjobs.com · Jan 2022 – May 2024</div></div>
+        <div class="project-icon" style="background:#E1F5EE;">🎯</div>
+      </div>
+      <p class="project-desc">Led requirements and delivery of personalized guidance and recommendation features within the career counselling module for job seekers.</p>
+      <div class="tags"><span class="tag teal">Personalization</span><span class="tag teal">Feature delivery</span></div>
+    </div>
+
+    <!-- Oct 2020 – Jan 2022 · Bdjobs Junior -->
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Video Resume (Web &amp; App)</div><div class="project-meta">Junior Product Analyst → Product Analyst · Bdjobs.com · Oct 2020 – May 2024</div></div>
+        <div class="project-icon" style="background:#FDF3E3;">🎥</div>
+      </div>
+      <p class="project-desc">Feature enabling jobseekers to submit short video introductions alongside resumes. Supported the initial rollout as Junior Analyst then led requirements gathering, wireframing, user interviews, and UAT through Team Lead role.</p>
+      <div class="tags"><span class="tag amber">15% user adoption</span><span class="tag amber">UAT led</span><span class="tag amber">User interviews</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Resume Dashboard (Web &amp; App)</div><div class="project-meta">Junior Product Analyst · Bdjobs.com · Oct 2020 – Jan 2022</div></div>
+        <div class="project-icon" style="background:#EAF1FB;">📄</div>
+      </div>
+      <p class="project-desc">Dashboard enabling users to track their resumes across three status types: viewed, downloaded (Video Resume, Bdjobs Resume, Emailed Resume). Led requirements documentation and delivery.</p>
+      <div class="tags"><span class="tag blue">Dashboard</span><span class="tag blue">Requirements documentation</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div><div class="project-name">Notifications System (Web &amp; App)</div><div class="project-meta">Junior Product Analyst · Bdjobs.com · Oct 2020 – Jan 2022</div></div>
+        <div class="project-icon" style="background:#FBEAF3;">🔔</div>
+      </div>
+      <p class="project-desc">Enhanced real-time notification delivery system to improve communication and job alert efficiency for users. Conducted usability reviews and documented issues to drive improvements.</p>
+      <div class="tags"><span class="tag rose">Real-time delivery</span><span class="tag rose">Usability improvement</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-label">Career</div>
+  <div class="section-title">Work Experience</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div>
+        <div class="tl-title">Product Analyst</div>
+        <div class="tl-company">Riseup Labs</div>
+        <div class="tl-date">May 2024 – Nov 2025</div>
+        <div class="tl-projects">Worked on <strong>10+ products</strong> including ITLMS for NAEM, EMS BPO Panel, QA Brains, UNICEF U-Youth, ARC iGaming, SilkenAura, HitSqwad, Gnetic, Shopify GIS, Choto.co, Islamic Quotes App.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div>
+        <div class="tl-title">Product Analyst, Team Lead (B2C)</div>
+        <div class="tl-company">Bdjobs.com Limited</div>
+        <div class="tl-date">Jan 2022 – May 2024</div>
+        <div class="tl-projects">Owned product direction for Bangladesh's largest job platform — <strong>My Points, Online Test, AI Assessment, Career Counselling, Messaging with Employers, Video Resume, App Redesign</strong> and more.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div>
+        <div class="tl-title">Junior Product Analyst (B2C)</div>
+        <div class="tl-company">Bdjobs.com Limited</div>
+        <div class="tl-date">Oct 2020 – Jan 2022</div>
+        <div class="tl-projects">Supported requirements documentation, wireframing, and usability analysis — <strong>Notifications, Resume Dashboard, Video Resume, Video Interview, Live Interview</strong>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label">Expertise</div>
+  <div class="section-title">Skills &amp; Tools</div>
+  <div class="skills-wrap">
+    <span class="skill">Requirements gathering</span>
+    <span class="skill">BRD / PRD / SRS writing</span>
+    <span class="skill">UAT planning &amp; execution</span>
+    <span class="skill">Workflow documentation</span>
+    <span class="skill">Change request management</span>
+    <span class="skill">Stakeholder management</span>
+    <span class="skill">Agile / Scrum</span>
+    <span class="skill">Sprint planning</span>
+    <span class="skill">User flows &amp; IA</span>
+    <span class="skill">Wireframing</span>
+    <span class="skill">Usability reviews</span>
+    <span class="skill">Funnel &amp; retention analysis</span>
+    <span class="skill">RICE &amp; MoSCoW</span>
+    <span class="skill">Post-launch review</span>
+    <span class="skill">User interviews</span>
+    <span class="skill">KPI &amp; outcome reporting</span>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-group"><div class="tool-group-name">Delivery</div><p>Jira, Trello, Asana, ClickUp, Notion, Confluence</p></div>
+    <div class="tool-group"><div class="tool-group-name">Analytics</div><p>Google Analytics, Mixpanel, Power BI, Microsoft Clarity, SQL, Excel</p></div>
+    <div class="tool-group"><div class="tool-group-name">Design &amp; Wireframing</div><p>Figma, FigJam, Miro, Adobe XD, Draw.io, Lucid, Canva</p></div>
+    <div class="tool-group"><div class="tool-group-name">Technical</div><p>APIs, HTML, CSS, MySQL, Python (basic)</p></div>
+    <div class="tool-group"><div class="tool-group-name">AI Tools</div><p>ChatGPT, Gemini, Uizard, Relume, VisilyAI, Banani.ai, Deepseek, Twinmind</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Academic</div>
+  <div class="section-title">Education</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-degree">MBA — Management Information Systems</div>
+      <div class="edu-school">United International University</div>
+      <div class="edu-detail">2019 · CGPA 3.69 · Result-based waiver</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">B.Sc — Computer Science &amp; Engineering</div>
+      <div class="edu-school">University of Asia Pacific</div>
+      <div class="edu-detail">2016 · CGPA 3.84 · VC's Honor List · Dean's Honor List</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-name">Kamrun Nahar</div>
+  <p style="margin-bottom:1rem;color:var(--muted)">Product Analyst · Dhaka, Bangladesh</p>
+  <p>
+    <a href="mailto:knahar213@gmail.com">knahar213@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://linkedin.com/in/kamrunnahar35" target="_blank" rel="noopener">LinkedIn</a>
+  </p>
+  <p style="margin-top:2rem;font-size:12px">© 2026 Kamrun Nahar</p>
+</footer>
+
+</body>
+</html>
